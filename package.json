@@ -1,0 +1,25 @@
+{
+  "name": "mushroom-discord-bot",
+  "version": "1.0.0",
+  "description": "Discord TTS bot with bulk deletion and anti-spam features",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": ["discord", "bot", "tts", "korean"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^14.14.1",
+    "@discordjs/voice": "^0.16.1",
+    "@google-cloud/text-to-speech": "^6.1.0",
+    "dotenv": "^16.3.1",
+    "ffmpeg-static": "^5.2.0",
+    "libsodium-wrappers": "^0.7.13",
+    "opusscript": "^0.0.8"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}

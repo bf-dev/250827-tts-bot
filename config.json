@@ -1,0 +1,11 @@
+{
+  "ttsTextChannelId": "1410249554904744109",
+  "ttsVoiceChannelId": "1393833196680118442",
+  "ttsVoice": "ko-KR-Wavenet-D",
+  "spamTimeout": 5,
+  "spamThreshold": 3,
+  "spamTimeWindow": 10,
+  "greetingsEnabled": true,
+  "adminRoles": [],
+  "customTTSFiles": {}
+}
