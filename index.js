@@ -214,13 +214,13 @@ function checkTextSpam(userId, content) {
     return false;
   }
   
-  // Check for identical messages
+  
   const uniqueMessages = new Set(recentMessages.map(msg => msg.content.toLowerCase().trim()));
   if (uniqueMessages.size === 1 && recentMessages.length >= config.textSpamThreshold) {
     return true;
   }
   
-  // Check for similar messages
+  
   const similarityThreshold = 0.7;
   let similarCount = 0;
   
@@ -403,7 +403,7 @@ client.on('messageCreate', async (message) => {
   
   const config = getConfig();
   
-  // Check for image/attachment spam
+  
   const hasAttachments = message.attachments.size > 0;
   let isSpam = false;
   let spamType = '';
@@ -431,10 +431,10 @@ client.on('messageCreate', async (message) => {
       
       await message.channel.send({ embeds: [embed] });
       
-      // Send warning to designated channel
+      
       await sendSpamWarning(message.channel, message.author, spamType, config);
       
-      // Clear spam trackers for this user
+      
       spamTracker.delete(message.author.id);
       imageSpamTracker.delete(message.author.id);
       
@@ -450,7 +450,7 @@ client.on('messageCreate', async (message) => {
       return;
     }
     
-    // Check for ignore emojis
+    
     if (config.ttsIgnoreEmojis && config.ttsIgnoreEmojis.length > 0) {
       const hasIgnoreEmoji = config.ttsIgnoreEmojis.some(emoji => message.content.includes(emoji));
       if (hasIgnoreEmoji) {
@@ -460,17 +460,17 @@ client.on('messageCreate', async (message) => {
     
     let cleanContent = message.content;
     
-    // Remove code blocks if enabled
+    
     if (config.ttsIgnoreCodeBlocks) {
-      // Remove triple backtick code blocks
+      
       cleanContent = cleanContent.replace(/```[\s\S]*?```/g, '');
-      // Remove inline code
+      
       cleanContent = cleanContent.replace(/`[^`]*`/g, '');
-      // Remove spoiler blocks
+      
       cleanContent = cleanContent.replace(/\|\|[\s\S]*?\|\|/g, '');
     }
     
-    // Standard cleaning
+    
     cleanContent = cleanContent
       .replace(/<@!?\d+>/g, '멘션')
       .replace(/<#\d+>/g, '채널')
@@ -483,12 +483,12 @@ client.on('messageCreate', async (message) => {
     try {
       let ttsText = cleanContent;
       
-      // Add username prefix if enabled
+      
       if (config.ttsShowUsername) {
         ttsText = `${message.author.displayName}님: ${cleanContent}`;
       }
       
-      // Get user-specific voice or default
+      
       const userVoice = config.userTTSVoices[message.author.id] || config.ttsVoice;
       const audioFilePath = await generateTTS(ttsText, userVoice);
       
@@ -753,9 +753,9 @@ client.on('interactionCreate', async (interaction) => {
       let collected = 0;
       let foundEnd = false;
       
-      // If we have start and end messages, we need a different approach
+      
       if (startMessageId && endMessageId) {
-        // Fetch messages between start and end
+        
         let fetchingBackward = true;
         let currentBefore = null;
         
@@ -774,15 +774,15 @@ client.on('interactionCreate', async (interaction) => {
             }
             
             if (foundEnd) {
-              // Check all filters
+              
               let shouldInclude = true;
               
-              // User filter
+              
               if (targetUser && msg.author.id !== targetUser.id) {
                 shouldInclude = false;
               }
               
-              // Period filter
+              
               if (shouldInclude && period) {
                 const now = Date.now();
                 const msgTime = msg.createdTimestamp;
@@ -816,7 +816,7 @@ client.on('interactionCreate', async (interaction) => {
           currentBefore = fetchedMessages.last()?.id;
         }
       } else {
-        // Normal fetching logic
+        
         while (collected < count) {
           const fetchLimit = Math.min(100, count - collected);
           const fetchedMessages = await interaction.channel.messages.fetch({
@@ -827,12 +827,12 @@ client.on('interactionCreate', async (interaction) => {
           if (fetchedMessages.size === 0) break;
           
           const filteredMessages = fetchedMessages.filter(msg => {
-            // User filter
+            
             if (targetUser && msg.author.id !== targetUser.id) {
               return false;
             }
             
-            // Period filter
+            
             if (period) {
               const now = Date.now();
               const msgTime = msg.createdTimestamp;
