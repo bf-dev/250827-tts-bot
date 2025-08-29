@@ -1,7 +1,3 @@
-# 🍄 버섯 디스코드 TTS 봇
-
-한국어 텍스트를 Google Cloud TTS로 읽어주는 디스코드 봇입니다. 도배 방지 기능과 개인별 목소리 설정이 가능합니다.
-
 ## 1. 사전 준비 (Prerequisites)
 
 봇을 실행하기 전에 두 가지 중요한 키(Key)가 필요합니다.
@@ -13,7 +9,7 @@
 3. 생성된 애플리케이션의 `Bot` 탭으로 이동합니다.
 4. `Add Bot` 버튼을 클릭하여 봇을 생성합니다.
 5. `Reset Token` 버튼을 클릭하여 봇의 토큰을 복사합니다. 이 토큰은 매우 중요하므로 안전하게 보관해야 합니다.
-6. **Privileged Gateway Intents** 섹션에서 `SERVER MEMBERS INTENT`, `MESSAGE CONTENT INTENT`, `VOICE STATE INTENT`를 활성화(enable)해야 합니다. 이는 봇이 멤버 목록을 보고 메시지를 읽으며 음성 채널 상태를 감지하는 데 필요합니다.
+6. **Privileged Gateway Intents** 섹션에서 모든 INTENT(3개) 를 활성화(enable)해야 합니다. 이는 봇이 멤버 목록을 보고 메시지를 읽으며 음성 채널 상태를 감지하는 데 필요합니다.
 
 ### 나. Google Cloud TTS API 키 (Google Cloud Text-to-Speech API Key)
 
