@@ -1,11 +1,25 @@
 {
   "ttsTextChannelId": "1410249554904744109",
   "ttsVoiceChannelId": "1393833196680118442",
-  "ttsVoice": "ko-KR-Wavenet-D",
+  "ttsVoice": "ko-KR-Neural2-B",
   "spamTimeout": 5,
   "spamThreshold": 3,
   "spamTimeWindow": 10,
   "greetingsEnabled": true,
   "adminRoles": [],
-  "customTTSFiles": {}
+  "customTTSFiles": {},
+  "ttsIgnoreCodeBlocks": true,
+  "ttsIgnoreEmojis": [
+    "🔇",
+    "🤫",
+    "🚫"
+  ],
+  "ttsShowVoiceType": true,
+  "ttsShowUsername": true,
+  "userTTSVoices": {
+    "1408451694290796574": "ko-KR-Wavenet-D"
+  },
+  "spamWarningChannelId": null,
+  "imageSpamThreshold": 30,
+  "textSpamThreshold": 30
 }
